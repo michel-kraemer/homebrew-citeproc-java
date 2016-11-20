@@ -1,8 +1,8 @@
 class CiteprocJava < Formula
   desc "A Citation Style Language (CSL) processor for Java"
   homepage "https://michel-kraemer.github.io/citeproc-java/"
-  url "https://github.com/michel-kraemer/citeproc-java/releases/download/1.0.0/citeproc-java-tool-1.0.0.zip"
-  sha256 "22e0a29dbe3785d4d16f5accf7f3ec8a8bb16152ef86f4159ddd917a16bacacd"
+  url "https://github.com/michel-kraemer/citeproc-java/releases/download/1.0.1/citeproc-java-tool-1.0.1.zip"
+  sha256 "941e287ab90160214846a0545bb741b51cf4f2bc580fbf3a073d70cdf1f0f58e"
 
   bottle :unneeded
 
