@@ -1,14 +1,14 @@
 class CiteprocJava < Formula
   desc "A Citation Style Language (CSL) processor for Java"
   homepage "https://michel-kraemer.github.io/citeproc-java/"
-  url "https://github.com/michel-kraemer/citeproc-java/releases/download/1.0.1/citeproc-java-tool-1.0.1.zip"
-  sha256 "941e287ab90160214846a0545bb741b51cf4f2bc580fbf3a073d70cdf1f0f58e"
+  url "https://github.com/michel-kraemer/citeproc-java/releases/download/2.0.0/citeproc-java-tool-2.0.0.zip"
+  sha256 "9c07cf0fbb6858398ed361ef1060aa7812b309e89f9d57f515dc878af9e1e41b"
 
   bottle :unneeded
 
   resource "j2v8" do
-    url "https://search.maven.org/remotecontent?filepath=com/eclipsesource/j2v8/j2v8_macosx_x86_64/4.5.0/j2v8_macosx_x86_64-4.5.0.jar", :using => :nounzip
-    sha256 "803e59778cfb3ffcb1adc841238c70e456f7dc3ac19abfcde4e3ae4e64b8ed59"
+    url "https://search.maven.org/remotecontent?filepath=com/eclipsesource/j2v8/j2v8_macosx_x86_64/4.6.0/j2v8_macosx_x86_64-4.6.0.jar", :using => :nounzip
+    sha256 "7d944fb89aa16ac50edc1914307cfba9af41f8cfd2882a00bdafe837f08404ab"
   end
 
   def install
@@ -23,11 +23,11 @@ class CiteprocJava < Formula
     bin.install_symlink binfile
 
     # copy J2V8 library
-    resource("j2v8").stage { cp "j2v8_macosx_x86_64-4.5.0.jar", "#{libexec}/lib/" }
+    resource("j2v8").stage { cp "j2v8_macosx_x86_64-4.6.0.jar", "#{libexec}/lib/" }
 
     # add J2V8 library to classpath
     text = File.read(binfile)
-    text = text.gsub(/^(CLASSPATH)=(.+)/, '\1=$APP_HOME/lib/j2v8_macosx_x86_64-4.5.0.jar:\2')
+    text = text.gsub(/^(CLASSPATH)=(.+)/, '\1=$APP_HOME/lib/j2v8_macosx_x86_64-4.6.0.jar:\2')
     File.open(binfile, "w") { |file| file.puts text }
   end
 
