@@ -4,8 +4,6 @@ class CiteprocJava < Formula
   url "https://github.com/michel-kraemer/citeproc-java/releases/download/2.0.0/citeproc-java-tool-2.0.0.zip"
   sha256 "9c07cf0fbb6858398ed361ef1060aa7812b309e89f9d57f515dc878af9e1e41b"
 
-  bottle :unneeded
-
   resource "j2v8" do
     url "https://search.maven.org/remotecontent?filepath=com/eclipsesource/j2v8/j2v8_macosx_x86_64/4.6.0/j2v8_macosx_x86_64-4.6.0.jar", :using => :nounzip
     sha256 "7d944fb89aa16ac50edc1914307cfba9af41f8cfd2882a00bdafe837f08404ab"
