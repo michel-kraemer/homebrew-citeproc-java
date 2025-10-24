@@ -1,8 +1,8 @@
 class CiteprocJava < Formula
   desc "A Citation Style Language (CSL) processor for Java"
   homepage "https://github.com/michel-kraemer/citeproc-java"
-  url "https://github.com/michel-kraemer/citeproc-java/releases/download/3.0.0/citeproc-java-tool-3.0.0.zip"
-  sha256 "40da6788b5c7d7101a2fcf3940d5252a8c353851f5bcf05a450deb9c30185028"
+  url "https://github.com/michel-kraemer/citeproc-java/releases/download/3.4.0/citeproc-java-tool-3.4.0.zip"
+  sha256 "521192c3ba5669ad04f9863c9f7a52b2156be7e178e21029d313501fa1b70589"
 
   def install
     # delete windows batch file
