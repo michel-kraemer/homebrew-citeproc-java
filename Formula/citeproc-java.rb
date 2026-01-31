@@ -1,8 +1,8 @@
 class CiteprocJava < Formula
   desc "A Citation Style Language (CSL) processor for Java"
   homepage "https://github.com/michel-kraemer/citeproc-java"
-  url "https://github.com/michel-kraemer/citeproc-java/releases/download/3.4.0/citeproc-java-tool-3.4.0.zip"
-  sha256 "521192c3ba5669ad04f9863c9f7a52b2156be7e178e21029d313501fa1b70589"
+  url "https://github.com/michel-kraemer/citeproc-java/releases/download/3.4.1/citeproc-java-tool-3.4.1.zip"
+  sha256 "ba638b238c2330cd534e79228e372fe04925d1c7308fa3de96671c443eefb1de"
 
   def install
     # delete windows batch file
@@ -17,21 +17,23 @@ class CiteprocJava < Formula
   end
 
   test do
-    (testpath/"references.bib").write <<-EOS.undent
-      @inproceedings{kraemer-2014,
-        author    = {Kraemer, Michel},
-        title     = {Controlling the Processing of Smart City Data in the Cloud with Domain-Specific Languages},
-        booktitle = {Proceedings of the 7th International Conference on Utility and Cloud Computing (UCC)},
-        series    = {UCC '14},
-        year      = {2014},
-        isbn      = {978-1-4799-7881-6},
-        location  = {London, UK},
-        pages     = {824},
-        numpages  = {6},
-        publisher = {IEEE}
-      }
+    (testpath/"references.bib").write <<~EOS
+      @article{kraemer-bormann-wuerz-kocon-frechen-schmid-2024,
+      author   = {Michel Krämer and Pascal Bormann and Hendrik M. Würz and Kevin
+        Kocon and Tobias Frechen and Jonas Schmid},
+      title    = {A cloud-based data processing and visualization pipeline for the
+        fibre roll-out in Germany},
+      journal  = {Journal of Systems and Software},
+      year     = {2024},
+      volume   = {211},
+      pages    = {112008},
+      issn     = {0164-1212},
+      doi      = {10.1016/j.jss.2024.112008}
+    }
     EOS
-    output = shell_output("#{bin}/citeproc-java bibliography -i references.bib -s acm-siggraph -l en-GB")
-    assert_equal "Kraemer, M. 2014. Controlling the Processing of Smart City Data in the Cloud with Domain-Specific Languages. Proceedings of the 7th International Conference on Utility and Cloud Computing (UCC), IEEE, 824.\n\n", output
+    ENV["LC_ALL"] = "en_US.UTF-8"
+    ENV["LANG"] = "en_US.UTF-8"
+    output = shell_output("#{bin}/citeproc-java bibliography -i references.bib -s apa -l en-GB")
+    assert_equal "Krämer, M., Bormann, P., Würz, H. M., Kocon, K., Frechen, T., & Schmid, J. (2024). A cloud-based data processing and visualization pipeline for the fibre roll-out in Germany. Journal of Systems and Software, 211, 112008. https://doi.org/10.1016/j.jss.2024.112008\n\n", output
   end
 end
